@@ -6,9 +6,6 @@ import re
 from utils.string_handlers import get_year_of_exp, parse_salary
 from configuration.config import Config
 
-
-# config.py
-
 def extract(page_start = 1, page_end = 1) -> pd.DataFrame:
 
     df = pd.DataFrame(columns=['title', 'company', 'salary_from', 'salary_to', 'currency', 'is_net', 'year_experience', 'link'])

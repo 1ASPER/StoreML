@@ -11,3 +11,8 @@ class Config:
     anti_scrapping_destroy = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
     }
+
+    db_path = "./data/jobs.db"
+
+    db_name = 'jobs.db'
+    db_table = 'jobs'

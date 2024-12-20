@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Vacancies{% endblock %}
+
+{% block content %}
+<h1>Job Vacancies</h1>
+
+<form method="get" class="filter-form">
+    <label for="experience">Filter by Experience:</label>
+    <select name="experience" id="experience">
+        <option value="">All</option>
+        {% for i in range(0, 6) %}
+        <option value="{{ i }}" {% if experience_filter==i %}selected{% endif %}>{{ i }} years</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<div class="vacancy-list">
+    {% for vacancy in vacancies %}
+    <div class="card">
+        <h2>{{ vacancy.title }}</h2>
+        <p>Company: {{ vacancy.company }}</p>
+        <p>Salary: {{ vacancy.salary_from }} - {{ vacancy.salary_to }} {{ vacancy.currency }}</p>
+        <p>Required: {{ vacancy.year_experience }} years</p>
+        <a href="{{ vacancy.link }}" target="_blank">View Details</a>
+    </div>
+    {% endfor %}
+</div>
+
+<nav class="pagination">
+    {% for p in range(1, total_pages + 1) %}
+    <a href="?page={{ p }}{% if experience_filter is not none %}&experience={{ experience_filter }}{% endif %}"
+       class="{% if p == current_page %}active{% endif %}">
+        {{ p }}
+    </a>
+    {% endfor %}
+</nav>
+{% endblock %}
